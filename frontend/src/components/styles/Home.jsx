@@ -1,8 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 import theme from '../utils/Variables';
-import HeroBackground from "../../assets/images/hero-background-image.png"
-import SectionOneImage from "../../assets/images/section-one-image.png";
-import SectionTwoImage from "../../assets/images/section-two-image.png";
+import HeroBackground from "../../assets/images/cigusta-hero-background.png"
+import SectionOneImage from "../../assets/images/cigusta-hero-image.png";
+import SectionTwoImage from "../../assets/images/cigusta-hero-image.png";
 
 const fadeIn = keyframes`
   0% {

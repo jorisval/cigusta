@@ -46,6 +46,49 @@ const LayoutsStyle = createGlobalStyle`
     p {
         font-size: 1rem;
     }
+    .header-band {
+        display: flex;
+        justify-content: center;
+        padding: 0 5%;
+        margin: -0.5rem;
+        background-color: ${theme.colors.backgroundColor2};
+        @media (min-width: ${theme.breakpoints.up.xlarge}) {
+            justify-content: space-between;
+        }
+        .infos {
+            display: none;
+            padding-left: 0;
+            @media (min-width: ${theme.breakpoints.up.xlarge}) {
+                display: flex;
+                justify-content: space-between;
+            }
+            li {
+                font-size: 0.875rem;
+                font-weight: 300;
+                list-style-type: none;
+                margin-right: 1rem;
+                color: ${theme.colors.white};
+                span {
+                    color: ${theme.colors.secondary};
+                    margin-right: 5px;
+                }
+            }
+        }
+        .media {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 0;
+            li {
+                list-style-type: none;
+                margin-right: 0.5rem;
+                color: ${theme.colors.white};
+                span {
+                    color: ${theme.colors.white};
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
     .header {
         animation: ${fadeIn} 1s ease-in;
         display: flex;
@@ -55,6 +98,7 @@ const LayoutsStyle = createGlobalStyle`
         margin: -0.5rem;
         margin-bottom: 0;
         font-size: ${theme.typography.navFontSize};
+        background-color: ${theme.colors.backgroundColor1};
         .menu-md {
                 display: block;
 
@@ -75,7 +119,7 @@ const LayoutsStyle = createGlobalStyle`
 
             div {
                 height: 2px;
-                background-color: ${theme.colors.primary};
+                background-color: ${theme.colors.white};
                 display: block;
                 margin: 4px;
                 transition: all 0.6s ease-in-out;
@@ -155,7 +199,7 @@ const LayoutsStyle = createGlobalStyle`
                 padding: 20px;
                 padding-left: 0;
                 margin-left: 0;
-                margin-right: 10%;
+                margin-right: 5%;
             }
             @media (min-width: ${theme.breakpoints.up.large}) {
                 margin-right: 30%;
@@ -173,15 +217,14 @@ const LayoutsStyle = createGlobalStyle`
             font-weight: 700;
             display: none;
             font-size: 0.875rem;
-            width: 60%;
-            margin-right: 5%;
+            width: 40%;
 
             @media (min-width: ${theme.breakpoints.up.medium}) {
                 display: block;
             }
             @media (min-width: ${theme.breakpoints.up.xlarge}) {
                 font-size: 1rem;
-                width: 50%;
+                width: 40%;
             }
 
             ul {
@@ -198,14 +241,15 @@ const LayoutsStyle = createGlobalStyle`
             }
 
             li {
-            padding: 20px 3%;
+                padding: 20px 3%;
             }
 
             a {
                 text-decoration: none;
-                color: ${theme.colors.primary};
+                color: ${theme.colors.white};
                 padding: 0 0 0.25rem 0;
-
+                font-weight: 400;
+                white-space: nowrap;
                 &:hover {
                     color: ${theme.colors.secondary};
                 }
@@ -215,33 +259,77 @@ const LayoutsStyle = createGlobalStyle`
             display: flex;
             padding: 15px 0;
         }
-        &__cart, &__search, &__favorite {
+        &__booking {
             display: flex;
             justify-content: center;
             align-items: center;
             color: ${theme.colors.white};
+            background-color: ${theme.colors.secondary};
+            border: 1px solid ${theme.colors.secondary};
+            border-radius: 2rem;
+            margin-right: 0.5rem;
+            font-size: 0.625rem;
+            padding: 0.125rem 0.5rem;
+            cursor: pointer;
+            white-space: nowrap;
+            @media (min-width: ${theme.breakpoints.up.medium}) {
+                font-size: 0.75rem;
+                padding: 0.125rem 0.5rem;
+            }
+            @media (min-width: ${theme.breakpoints.up.xlarge}) {
+                padding: 0.25rem 1rem;
+                font-size: 1rem;
+            }
+        }
+        &__cart, .call-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: ${theme.colors.secondary};
+            color: ${theme.colors.white};
             width: 25px;
             height: 25px;
-            border: 1px solid ${theme.colors.white};
+            border: 1px solid ${theme.colors.secondary};
             border-radius: 50%;
-            box-shadow: 0 4px 4px rgba(0,0,0,0.1);
             margin-right: 0.5rem;
             @media (min-width: ${theme.breakpoints.up.medium}) {
                 width: 30px;
-                height: 30px;;
+                height: 30px;
+            }
+        }
+        &__call {
+            display: flex;
+            .call {
+                display: none;
+                flex-direction: column;
+                color: ${theme.colors.white};
+                @media (min-width: ${theme.breakpoints.up.xlarge}) {
+                    display: flex;
+                }
+                .text {
+                    font-size: 0.75rem;
+                    font-weight: 300;
+                    color: ${theme.colors.c4};
+                }
+                .number {
+                    font-size: 0.75rem;
+                    font-weight: 300;
+                    color: ${theme.colors.white};
+                    white-space: nowrap;
+                }
             }
         }
 
-        .bi-cart3, .bi-search, .bi-heart {
-            font-size: 1rem;
-            color: ${theme.colors.primary};
+        .bi-cart3, .bi-telephone-fill {
+            font-size: 0.875rem;
+            color: ${theme.colors.white};
             cursor: pointer;
 
             @media (min-width: ${theme.breakpoints.up.xlarge}) {
-            font-size: 1.125rem;
+            font-size: 1rem;
             }
         }
-
+        
         .cart {
             position: absolute;
             z-index: 100;

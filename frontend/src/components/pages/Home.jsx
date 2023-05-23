@@ -1,7 +1,7 @@
-//import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useEffect } from "react";
 //import CatalogView from "../layout/catalog-view";
 //import ThankYouPopup from "./Thank-you-booking";
-//import { HeaderContext } from "../utils/context";
+import { HeaderContext } from "../utils/context";
 //import Hero from "../../assets/images/k-hero-image.png";
 //import CustomerImage1 from "../../assets/images/customer-image.png";
 //import Coma from "../../assets/images/section-one-coma.png";
@@ -20,8 +20,8 @@ import { HomeContainer } from "../styles/Home";
 
 
 function Home() {
-    /*const { setActivePage } = useContext(HeaderContext);
-    const [showThankYouPopup, setShowThankYouPopup] = useState(false);
+    const { setActivePage } = useContext(HeaderContext);
+    /*const [showThankYouPopup, setShowThankYouPopup] = useState(false);
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
@@ -73,12 +73,12 @@ function Home() {
     const handleReviewCircleClick = (index) => {
         setActiveReview(index);
         reviewRef.current.scrollLeft = index * reviewRef.current.offsetWidth;
-    };
+    };*/
 
 
     useEffect(() => {
         setActivePage('home');
-    }, [setActivePage]);
+    }, [setActivePage]);/*
     async function handleBookingSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
