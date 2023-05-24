@@ -136,7 +136,6 @@ animation: ${fadeIn} 1s ease-in;
 }
 .services-section {
     margin: 0 -0.5rem;
-    margin-top: ${theme.layout.spaceBetween90};
     padding: ${theme.layout.spaceBetween60} ${theme.layout.marginLeftRight};
     background-color: ${theme.colors.backgroundColor1};
     &__header {
@@ -217,6 +216,105 @@ animation: ${fadeIn} 1s ease-in;
                 background-color: ${theme.colors.transparent};
                 border: 2px solid ${theme.colors.white};
                 box-shadow: 0 4 4 rgba(0, 0, 0, 0.1);
+                &:hover {
+                    background-color: ${theme.colors.secondary};
+                }
+            }
+        }
+    }
+}
+
+.reviews-section {
+    margin: 0 -0.5rem;
+    padding: ${theme.layout.spaceBetween60} ${theme.layout.marginLeftRight};
+    background-color: ${theme.colors.backgroundColor1};
+    &__header {
+        text-align: center;
+        margin: auto;
+        width: 80%;
+        @media (min-width: ${theme.breakpoints.up.medium}) {
+            width: 40%;
+        }
+        .subtitle {
+            font-family: ${theme.typography.tertiaryFontFamily};
+            font-size: 1.25rem;
+            color: ${theme.colors.secondary};
+            margin-bottom: 0.5rem;
+            @media (min-width: ${theme.breakpoints.up.medium}) {
+                font-size: 1.875rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+        h2 {
+            font-family: ${theme.typography.secondaryFontFamily};
+            font-size: 1.75rem;
+            color: ${theme.colors.white};
+            margin-top: 0.5rem;
+            margin-bottom: 0.625rem;
+            @media (min-width: ${theme.breakpoints.up.medium}) {
+                margin-top: 1.25rem;
+                font-size: 2.5rem;
+            }
+        }
+        .separate-line {
+            width: 30px;
+            margin: auto;
+            border: 1px solid ${theme.colors.secondary};
+        }
+        p {
+            font-size: 1rem;
+            color: ${theme.colors.white};
+            font-weight: 200;
+            line-height: 1.25rem;
+        }
+    }
+    .reviews {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: ${theme.layout.spaceBetween60};
+        .review {
+            min-width: 250px;
+            width: 40%;
+            box-sizing: border-box; 
+            padding: ${theme.layout.spaceBetween30};
+            margin: auto;
+            margin-bottom: 10px;
+            color: ${theme.colors.white};
+            background-color: ${theme.colors.backgroundColor3};
+            text-align: center;
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-bottom: 0.625rem;
+                @media (min-width: ${theme.breakpoints.up.medium}) {
+                    width: 60px;
+                    height: 60px;
+                } 
+            }
+            h3 {
+                font-family: ${theme.typography.secondaryFontFamily};
+                font-size: 1.125rem;
+                font-weight: bold;
+                margin-bottom: 0.625rem;
+                @media (min-width: ${theme.breakpoints.up.medium}) {
+                    font-size: 1.25rem;
+                }   
+            }
+            p {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                font-weight: 200;
+                margin-bottom: 1.25rem;
+                @media (min-width: ${theme.breakpoints.up.medium}) {
+                    font-size: 1rem;
+                    line-height: 1.375rem;
+                } 
+            }
+            .cta-button {
+                background-color: ${theme.colors.transparent};
+                border: 2px solid ${theme.colors.transparent};
                 &:hover {
                     background-color: ${theme.colors.secondary};
                 }

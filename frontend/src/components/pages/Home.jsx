@@ -4,7 +4,8 @@ import CatalogView from "../layout/catalog-view";
 import { HeaderContext } from "../utils/context";
 import Slide1 from "../../assets/images/cigusta-hero-background.png";
 import Slide2 from "../../assets/images/cigusta-hero-background.png";
-//import CustomerImage1 from "../../assets/images/customer-image.png";
+import CustomerImage1 from "../../assets/images/review-image-1.png";
+import CustomerImage2 from "../../assets/images/review-image-2.png";
 //import Coma from "../../assets/images/section-one-coma.png";
 //import StaffImage1 from "../../assets/images/staff-1.png";
 //import StaffImage2 from "../../assets/images/staff-2.png";
@@ -64,6 +65,18 @@ function Home() {
         },
     ]
 
+    const reviewsData = [
+        {
+            title: "Best Support Ever",
+            image: CustomerImage1,
+            content: "consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehiculacongue adipiscing elit duis tristique sollicitudin"
+        },
+        {
+            title: "Love The Menu",
+            image: CustomerImage2,
+            content: "consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisicing elit duis tristique  vehiculacongue adipiscing elit duis tristique sollicitudin"
+        },
+    ]
     const handleHeroSlideScroll = (direction) => {
         if (direction === 'left') {
             heroSlideRef.current.scrollLeft -= heroSlideRef.current.offsetWidth;
@@ -235,8 +248,26 @@ function Home() {
                     })}
                 </div>
             </div>
-            
-            <CatalogView/>{/*
+            <CatalogView/>
+            <div className="reviews-section">
+                <div className="reviews-section__header">
+                    <p className="subtitle">People Talk</p>
+                    <h2>Our Guestbook</h2>
+                    <div className="separate-line"></div>
+                </div>
+                <div className="reviews">
+                    {reviewsData.map((review, index) => {
+                        return(
+                            <div className="review" key={index}>
+                                <img src={review.image} alt="" />
+                                <h3>{review.title}</h3>
+                                <p>{review.content}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+            {/*
             <div className="section-one">
                 <div className="section-one__image">
                 </div>

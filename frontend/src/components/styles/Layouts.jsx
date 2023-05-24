@@ -881,7 +881,6 @@ const LayoutsStyle = createGlobalStyle`
         padding-top: ${theme.layout.spaceBetween30};
         padding-bottom: 1.25rem;
         margin: 0 -0.5rem;
-        margin-top: ${theme.layout.spaceBetween90};
         color: ${theme.colors.white};
         background-color: ${theme.colors.backgroundColor2};
         border-top: 1px #1E1D23 solid;
