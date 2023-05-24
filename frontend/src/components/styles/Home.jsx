@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 import theme from '../utils/Variables';
-import HeroBackground from "../../assets/images/cigusta-hero-background.png"
 import SectionOneImage from "../../assets/images/cigusta-hero-image.png";
 import SectionTwoImage from "../../assets/images/cigusta-hero-image.png";
 
@@ -26,71 +25,114 @@ const scroll = keyframes`
 export const HomeContainer = styled.div`
 animation: ${fadeIn} 1s ease-in;
 .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: url(${HeroBackground}) center center / cover;
-    
-    margin: 0 -0.5rem;
-    @media (min-width: ${theme.breakpoints.up.medium}) {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0 -8px;
+    position: relative;
+    .bi-arrow-left-circle {
+        position: absolute;
+        left: ${theme.layout.spaceBetween10};
+        top: 40%;
+        color: ${theme.colors.white};
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 12;
     }
-    &__text {  
-        padding: 0.5rem;
-        z-index: 2;
-        width: 80%;
-        margin: auto;
-        text-align: center;
-        @media (min-width: ${theme.breakpoints.up.medium}) {
-            margin: 0 0 0 ${theme.layout.marginLeftRight};
-            width: 40%;
-            max-width: 33rem;
-            text-align: unset;
+    .bi-arrow-right-circle {
+        position: absolute;
+        right: ${theme.layout.spaceBetween10};
+        top: 40%;
+        color: ${theme.colors.white};
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 12;
+    }
+    .slide { 
+        &-circles {
+            display: flex;
+            position: absolute;
+            bottom: ${theme.layout.spaceBetween30};
+            left: 45%;
         }
-        h1 {
-            font-family: ${theme.typography.secondaryFontFamily};
-            color: ${theme.colors.white};
-            font-size: 2rem;
-            line-height: 2rem;
-            margin-bottom: ${theme.layout.spaceBetween10};
-            @media (min-width: ${theme.breakpoints.up.medium}) {
-                font-size: 3.125rem;
-                line-height: 3.2rem;
-                text-align: left;
-            }
-        }
-        .subtitle {
-            color: ${theme.colors.white};
+        &-circle {
+            margin-right: ${theme.layout.spaceBetween10};
+            cursor: pointer;
             font-size: 1rem;
-            line-height: 1.625rem;
-            font-weight: 700;
-            margin-bottom: ${theme.layout.spaceBetween30};
-            @media (min-width: ${theme.breakpoints.up.medium}) {
-                text-align: left;
-                margin-bottom: 0;
-            }
-            span {
+            color: ${theme.colors.white};
+            &.active {
                 color: ${theme.colors.secondary};
             }
         }
     }
-    &__image {
-        margin: auto;
-        margin-bottom: -4px;
-        max-width: 90%;
-        @media (min-width: ${theme.breakpoints.up.medium}) {
+    &-slides {
 
-            max-width: 50%;
-            margin: none;
+    }
+    &-slide {
+        display: none;
+        animation: ${fadeIn} 0.5s ease-in;
+        flex-direction: column;
+        justify-content: center;
+        background: ${props => `url(${props.backgroundImage}) center center / cover no-repeat`};
+        position: relative;
+        margin: 0 -0.5rem;
+        padding: ${theme.layout.spaceBetween60};
+        @media (min-width: ${theme.breakpoints.up.medium}) {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 -8px;
+            padding: ${theme.layout.spaceBetween90};
         }
-        img {
+        &.active {
+            display: flex;
+        }
+        .hero__text {  
+            padding: 0.5rem;
+            z-index: 2;
+            width: 90%;
+            margin: auto;
+            text-align: center;
+            @media (min-width: ${theme.breakpoints.up.medium}) {
+                margin: 0 0 0 ${theme.layout.marginLeftRight};
+                width: 40%;
+                max-width: 33rem;
+                text-align: unset;
+            }
+            h1 {
+                font-family: ${theme.typography.secondaryFontFamily};
+                color: ${theme.colors.white};
+                font-size: 2rem;
+                line-height: 2rem;
+                margin-bottom: ${theme.layout.spaceBetween10};
+                @media (min-width: ${theme.breakpoints.up.medium}) {
+                    font-size: 3.125rem;
+                    line-height: 3.2rem;
+                    text-align: left;
+                }
+            }
+            .subtitle {
+                color: ${theme.colors.white};
+                font-size: 1rem;
+                line-height: 1.5rem;
+                font-weight: 300;
+                margin-bottom: ${theme.layout.spaceBetween30};
+                @media (min-width: ${theme.breakpoints.up.medium}) {
+                    text-align: left;
+                }
+            }
+            .cta-button {
+                border-radius: 2rem;
+            }
+        }
+        .hero__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background-color: rgba(1,6,7,0.5);
+            @media (min-width: ${theme.breakpoints.up.medium}) {
+                display: none;
+            }
         }
     }
-
 }
 .section-one {
     margin: 0 -0.5rem;

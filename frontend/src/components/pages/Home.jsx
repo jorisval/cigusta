@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState, useRef, useCallback } from "react";
 //import CatalogView from "../layout/catalog-view";
 //import ThankYouPopup from "./Thank-you-booking";
 import { HeaderContext } from "../utils/context";
-//import Hero from "../../assets/images/k-hero-image.png";
+import Slide1 from "../../assets/images/cigusta-hero-background.png";
+import Slide2 from "../../assets/images/cigusta-hero-background.png";
 //import CustomerImage1 from "../../assets/images/customer-image.png";
 //import Coma from "../../assets/images/section-one-coma.png";
 //import StaffImage1 from "../../assets/images/staff-1.png";
@@ -21,6 +22,55 @@ import { HomeContainer } from "../styles/Home";
 
 function Home() {
     const { setActivePage } = useContext(HeaderContext);
+    const [activeHeroSlide, setActiveHeroSlide] = useState(0);
+    const heroSlideRef = useRef();
+    const heroSlidesData = [
+        {
+            title: "Welcome To Restaurant",
+            subtitle: "consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula ipsum a arcu cursus vitae congue",
+            image: Slide1,
+        },
+        {
+            title: "New Food Experience !",
+            subtitle: "consectetur sollicitudin nibh sit amet commodo nulla sollicitudin nibh sit amet facilisi nullam vehicula ipsum a arcu cursus vitae congue",
+            image: Slide2,
+        }
+    ]
+
+    const handleHeroSlideScroll = (direction) => {
+        if (direction === 'left') {
+            heroSlideRef.current.scrollLeft -= heroSlideRef.current.offsetWidth;
+            if (activeHeroSlide > 0) {
+                setActiveHeroSlide(activeHeroSlide - 1);
+            }
+        } else {
+            heroSlideRef.current.scrollLeft += heroSlideRef.current.offsetWidth;
+            if   (activeHeroSlide < heroSlidesData.length - 1) {
+                setActiveHeroSlide(activeHeroSlide + 1);
+            }
+        }
+    };
+
+    const handleHeroSlideCircleClick = (index) => {
+        setActiveHeroSlide(index);
+        heroSlideRef.current.scrollLeft = index * heroSlideRef.current.offsetWidth;
+    };
+
+    const autoScroll = useCallback(() => {
+        if (activeHeroSlide < heroSlidesData.length - 1) {
+            setActiveHeroSlide(activeHeroSlide + 1);
+            heroSlideRef.current.scrollLeft += heroSlideRef.current.offsetWidth;
+        } else {
+            setActiveHeroSlide(0);
+            heroSlideRef.current.scrollLeft = 0;
+        }
+    }, [activeHeroSlide, heroSlidesData.length]);
+
+    useEffect(() => {
+        const autoScrollTimer = setInterval(autoScroll, 8000);
+        return () => clearInterval(autoScrollTimer);
+    }, [autoScroll]); 
+        
     /*const [showThankYouPopup, setShowThankYouPopup] = useState(false);
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
@@ -113,16 +163,32 @@ function Home() {
     */
 
     return(
-        <HomeContainer className="home">{/*
+        <HomeContainer className="home" backgroundImage={heroSlidesData[activeHeroSlide].image}>
             <div className="hero">
-                <div className="hero__text">
-                    <h1>RECIPE MENU</h1>
-                    <p className="subtitle">HOME <span>/ RECIPE MENU</span></p>
+                <span className="bi bi-arrow-left-circle" onClick={() => handleHeroSlideScroll('left')}></span>
+                <div className="hero-slides" ref={heroSlideRef}>
+                    {heroSlidesData.map((heroSlide, index) => (
+                        <div className={`hero-slide ${index === activeHeroSlide ? 'active' : ''}`} key={index}>
+                            <div className="hero__text">
+                                <h1>{heroSlide.title}</h1>
+                                <p className="subtitle">{heroSlide.subtitle}</p>
+                                <button className="cta-button">More Details</button>
+                            </div>
+                            <div className="hero__overlay"></div>
+                        </div>
+                    ))}
                 </div>
-                <div className="hero__image">
-                    <img src={Hero} alt=""/>
+                <span className="bi bi-arrow-right-circle" onClick={() => handleHeroSlideScroll('right')}></span>
+                <div className="slide-circles">
+                    {heroSlidesData.map((_, index) => (
+                        <span
+                            className={`slide-circle bi ${index === activeHeroSlide ? 'bi-record-circle active' : 'bi-circle'}`}
+                            onClick={() => handleHeroSlideCircleClick(index)}
+                            key={index}
+                        ></span>
+                    ))}
                 </div>
-            </div>
+            </div>{/*
             <CatalogView id="catalogView"/>
             <div className="section-one">
                 <div className="section-one__image">
