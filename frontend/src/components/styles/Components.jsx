@@ -26,7 +26,7 @@ const ComponentsStyle = createGlobalStyle`
         color: ${theme.colors.white};
         padding: 0.5rem 1.5rem;
         background-color: ${theme.colors.button};
-        border-radius: 5px;
+        border-radius: 2rem;
         border-style: none;
         display: inline-block;
         margin-bottom: ${theme.layout.spaceBetween30};

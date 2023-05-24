@@ -17,7 +17,7 @@ import Slide2 from "../../assets/images/cigusta-hero-background.png";
 //import Trust6 from "../../assets/images/trust-6.png";
 //import Trust7 from "../../assets/images/trust-7.png";
 import { HomeContainer } from "../styles/Home";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function Home() {
@@ -35,6 +35,33 @@ function Home() {
             subtitle: "consectetur sollicitudin nibh sit amet commodo nulla sollicitudin nibh sit amet facilisi nullam vehicula ipsum a arcu cursus vitae congue",
             image: Slide2,
         }
+    ]
+
+    const servicesData = [
+        {
+            title: "Outdoor Bar",
+            content: "consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehiculacongue",
+        },
+        {
+            title: "Live Music Every day",
+            content: "consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehiculacongue",
+        },
+        {
+            title: "Open Till Late",
+            content: "consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehiculacongue",
+        },
+        {
+            title: "Selection Of Drinks",
+            content: "consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehiculacongue",
+        },
+        {
+            title: "Sports On Projector",
+            content: "consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehiculacongue",
+        },
+        {
+            title: "Pool Table And Football",
+            content: "consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehiculacongue",
+        },
     ]
 
     const handleHeroSlideScroll = (direction) => {
@@ -188,7 +215,27 @@ function Home() {
                         ></span>
                     ))}
                 </div>
-            </div>{/*
+            </div>
+            <div className="services-section">
+                <div className="services-section__header">
+                    <p className="subtitle">Services</p>
+                    <h2>What we provide</h2>
+                    <div className="separate-line"></div>
+                    <p>consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehiculacongue</p>
+                </div>
+                <div className="services">
+                    {servicesData.map((service, index) => {
+                        return(
+                            <div className="service" key={index}>
+                                <h3>{service.title}</h3>
+                                <p>{service.content}</p>
+                                <Link to="" className="cta-button">More Details</Link>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+            {/*
             <CatalogView id="catalogView"/>
             <div className="section-one">
                 <div className="section-one__image">
