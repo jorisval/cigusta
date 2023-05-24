@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef, useCallback } from "react";
-//import CatalogView from "../layout/catalog-view";
+import CatalogView from "../layout/catalog-view";
 //import ThankYouPopup from "./Thank-you-booking";
 import { HeaderContext } from "../utils/context";
 import Slide1 from "../../assets/images/cigusta-hero-background.png";
@@ -235,8 +235,8 @@ function Home() {
                     })}
                 </div>
             </div>
-            {/*
-            <CatalogView id="catalogView"/>
+            
+            <CatalogView/>{/*
             <div className="section-one">
                 <div className="section-one__image">
                 </div>

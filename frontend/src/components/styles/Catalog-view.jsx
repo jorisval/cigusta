@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import theme from '../utils/Variables';
+import CatalogBackground from "../../assets/images/catalog-view-background.png";
 
 const shimmer = keyframes`
     0% {
@@ -11,11 +12,11 @@ const shimmer = keyframes`
 `;
 
 export const SkeletonLoader = styled.div`
-    width: 14.375rem;
-    height: 18rem;
-    border-radius: 0.625rem;
-    background-color: #f0f0f0;
-    background-image: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    min-width: 14.375rem;
+    width: 40%;
+    height: 9.375rem;
+    background-color: ${theme.colors.titleH4};
+    background-image: linear-gradient(90deg, ${theme.colors.titleH4} 25%, ${theme.colors.link} 50%, ${theme.colors.titleH4} 75%);
     background-size: 200% 100%;
     background-repeat: no-repeat;
     animation: ${shimmer} 1.5s infinite;
@@ -23,120 +24,120 @@ export const SkeletonLoader = styled.div`
     margin-bottom: 2.1875rem;
     padding-bottom: 0.9375rem;
     @media (min-width: ${theme.breakpoints.up.medium}) {
-        width: 20rem;
-        height: 25.875rem;
+        min-width: 18rem;
+        height: 7.5rem;
         padding-bottom: 1.875rem;
     }
 `;
 
 export const CatalogViewContainer = styled.div`
-    margin: 0 ${theme.layout.marginLeftRight};
-    margin-top: ${theme.layout.spaceBetween30}; 
+    position: relative;
+    padding: ${theme.layout.spaceBetween60} ${theme.layout.marginLeftRight};
+    margin-top: 0; 
     text-align: center;
+    background: url(${CatalogBackground}) center center / cover;
     @media (min-width: ${theme.breakpoints.up.medium}) {
-        margin-top: ${theme.layout.spaceBetween90};
+        padding: ${theme.layout.spaceBetween90} ${theme.layout.marginLeftRight};
+    }
+    .catalog-view__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(1,6,7,0.5);
+        z-index: 15;
     }
     .services-section__header {
-        margin-bottom: 2.1875rem;
+        margin-bottom: 0;
+        z-index: 16;
+        position: relative;
         .subtitle {
             font-family: ${theme.typography.tertiaryFontFamily};
             font-size: 1.25rem;
             color: ${theme.colors.secondary};
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             @media (min-width: ${theme.breakpoints.up.medium}) {
                 font-size: 1.875rem;
-                margin-bottom: 1.875rem;
+                margin-bottom: 1.25rem;
             }
         }
         h2 {
             font-family: ${theme.typography.secondaryFontFamily};
             font-size: 1.75rem;
-            margin-top: 1rem;
+            color: ${theme.colors.white};
+            margin-top: 0.5rem;
+            margin-bottom: 0.625rem;
             @media (min-width: ${theme.breakpoints.up.medium}) {
-                margin-top: 1.875rem;
+                margin-top: 1.25rem;
                 font-size: 2.5rem;
             }
         }
+        .separate-line {
+            width: 30px;
+            margin: auto;
+            border: 1px solid ${theme.colors.secondary};
+        }
         .category-buttons {
             display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-            -ms-overflow-style: none; /* Internet Explorer 10+ */
-            scrollbar-width: none; /* Firefox */
-            
-            &::-webkit-scrollbar { /* Chrome, Safari, Edge */
-                display: none;
+            justify-content: center;
+           
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+            @media (min-width: ${theme.breakpoints.up.medium}) {
+                margin-top: 1.25rem;
             }
-
             .cta-button {
                 flex: 0 0 auto;
-                background-color: ${theme.colors.white};
-                border-radius: 10px;
-                box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-                color: ${theme.colors.titleH2};
+                position: relative;
+                background-color: ${theme.colors.transparent};
+                border: 1 solid ${theme.colors.transparent};
+                color: ${theme.colors.white};
+                margin: 0;
                 margin-right: 0.625rem;
                 &.active {
-                    background-color: ${theme.colors.secondary};
+                    color: ${theme.colors.secondary};
+                }
+                .bi {
+                    display: none;
+                    position: absolute;
+                    font-size: 1.125rem;
+                    bottom: -10px;
+                    left: 40%;
                     color: ${theme.colors.white};
+                    &.active {
+                        display: inline-block;
+                    }
                 }
             }
         }
     }
-    .services {
+    .s-services {
+        z-index: 16;
+        position: relative;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-        .service {
-            width: 14.375rem;
-            border-radius: 0.625rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: ${theme.colors.white};
-            padding: 0.9375rem;
+        background-color: ${theme.colors.titleH4};
+        border-top: 3px solid ${theme.colors.white};
+        padding: ${theme.layout.spaceBetween30} 0;
+        margin: 0;
+        margin-bottom: ${theme.layout.spaceBetween30};
+        .s-service {
+            min-width: 14.375rem;
+            width: 40%;
+            padding: 0.5rem;
             margin: auto;
-            margin-bottom: 2.1875rem;
+            margin-bottom: 1rem;
             position: relative;
+            background-color: ${theme.colors.transparent};
             @media (min-width: ${theme.breakpoints.up.medium}) {
-                width: 16rem;
-                padding: 1.875rem 1.5625rem;
+                min-width: 16rem;
+                padding: 0.875rem;
             }
-            .add-favorite {
-                position absolute;
-                z-index: 13;
-                right: 0.625rem;
-                top: 0.625rem;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: ${theme.colors.white};
-                width: 25px;
-                height: 25px;
-                border: 1px solid ${theme.colors.white};
-                border-radius: 50%;
-                box-shadow: 0 4px 4px rgba(0,0,0,0.1);
-                margin-right: 0.5rem;
-                cursor: pointer;
-                @media (min-width: ${theme.breakpoints.up.medium}) {
-                    width: 30px;
-                    height: 30px;
-                    right: 1rem;
-                    top: 1rem;
-                }
-
-                .bi-heart {
-                    font-size: 1rem;
-                    color: ${theme.colors.primary};
-                    @media (min-width: ${theme.breakpoints.up.xlarge}) {
-                    font-size: 1.125rem;
-                    }
-                }
-                .bi-heart-fill {
-                    font-size: 1rem;
-                    color: ${theme.colors.secondary};
-                    @media (min-width: ${theme.breakpoints.up.xlarge}) {
-                    font-size: 1.125rem;
-                    }
-                }
+            &:hover {
+                box-shadow: 0 0 10px ${theme.colors.link};
             }
             a {
                 text-decoration: none;
@@ -145,49 +146,35 @@ export const CatalogViewContainer = styled.div`
                 text-align: left;
                 position: relative;
                 z-index: 2;
-                margin-bottom: 0.9375rem;
+                display: flex;
+                align-items: center;
                 img {
-                    width: 100%;
-                    border-radius: 0.625rem 0.625rem 0 0;
-                    margin-bottom: 0.9375rem;
-                    @media (min-width: ${theme.breakpoints.up.medium}) {
-                        margin-bottom: 1.875rem;
-                    }
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    margin-right: 0.5rem;
                 }
                 .part-one {
                     display: flex;
-                    justify-content: space-between;
-                    p {
-                        font-size: 1rem;
-                        color: ${theme.colors.paragraph};
-                    }
-                    .star-icons {
+                    flex-direction: column;
+                    color: ${theme.colors.paragraph};
+                    .header {
                         display: flex;
-                        span {
+                        justify-content: space-between;
+                        background-color: ${theme.colors.transparent};
+                        .name {
                             font-size: 1rem;
-                            color: ${theme.colors.secondary};
-                            margin: 0 0.125rem;
+                        }
+                        .price {
+                            color: ${theme.colors.link};
                         }
                     }
-
-                }
-                p {
-                    font-size: 1.125rem;
-                    text-align: left;
-                    color: ${theme.colors.titleH2};
-                    margin: 0 0 0.5rem;
-                    @media (min-width: ${theme.breakpoints.up.medium}) {
-                        margin-bottom: 0.5rem;
+                    .description {
+                        font-size: 0.875rem;
+                        color: ${theme.colors.white};
+                        font-weight: 200;
+                        line-height: 1.25rem;
                     }
-                }
-                span {
-                    font-size: 0.9375rem;
-                    text-align: left;
-                    color: ${theme.colors.titleH4};
-                }
-                .initial-price {
-                    text-decoration: line-through;
-                    margin: 0 0.375rem;
                 }
             }
         }
@@ -199,9 +186,11 @@ export const CatalogViewContainer = styled.div`
     }
     a {
         background-color: ${theme.colors.link};
-        border-radius: 10px;
+        border-radius: 2rem;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
         color: ${theme.colors.white};
         margin-right: 0.625rem;
+        z-index: 16;
+        position: relative;
     }
 `;
