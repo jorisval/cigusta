@@ -161,12 +161,14 @@ export const CatalogViewContainer = styled.div`
                     .header {
                         display: flex;
                         justify-content: space-between;
+                        align-items: center;
                         background-color: ${theme.colors.transparent};
                         .name {
                             font-size: 1rem;
                         }
                         .price {
                             color: ${theme.colors.link};
+                            font-size: 0.875rem;
                         }
                     }
                     .description {

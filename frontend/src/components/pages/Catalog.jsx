@@ -5,19 +5,15 @@ import { useFetch } from "../utils/hooks";
 import { CatalogContainer, SkeletonLoader } from "../styles/Catalog";
 
 function Catalog() {
-    const { setActivePage, favoriteItemIds, setFavoriteItemIds  } = useContext(HeaderContext);
+    const { setActivePage  } = useContext(HeaderContext);
     const { data, dataIsLoading } = useFetch('http://localhost:3000/api/catalog');
     const [catalogViewData, setCatalogViewData] = useState([]);
     const [selectedCategoryData, setSelectedCategoryData] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState("ALL CATEGORIES");
+    const [selectedCategory, setSelectedCategory] = useState("Dessert");
     const categories = [
-        "ALL CATEGORIES",
-        "BURGER",
-        "PIZZA",
-        "BLUEBERRY SHAKE",
-        "CHIKKEN COUP",
-        "ICE CREAM",
-        "DRUNK"
+        "Dessert",
+        "Food",
+        "Drunk"
     ];
 
     const[showCount, setShowCount] = useState(6);
@@ -27,14 +23,9 @@ function Catalog() {
     
     useEffect(() => {
     if (data && Array.isArray(data) && data.length > 0) {
-            if (selectedCategory === "ALL CATEGORIES") {
-            setCatalogViewData(data.slice(0, showCount));
-            setSelectedCategoryData(data)
-        } else {
-            const filteredData = data.filter(product => product.category === selectedCategory);
-            setSelectedCategoryData(filteredData);
-            setCatalogViewData(filteredData.slice(0, showCount));
-        }
+        const filteredData = data.filter(product => product.category === selectedCategory);
+        setSelectedCategoryData(filteredData);
+        setCatalogViewData(filteredData.slice(0, showCount));
     }
     }, [data, selectedCategory, showCount]);
 
@@ -43,69 +34,52 @@ function Catalog() {
         setActivePage("catalog");
     }, [setActivePage]);
     
-    const handleAddFavoriteClick = (itemId) => {
-        if (favoriteItemIds.includes(itemId)) {
-            // Remove itemId from array
-            setFavoriteItemIds(favoriteItemIds.filter(id => id !== itemId));
-        } else {
-            // Add itemId to array
-            setFavoriteItemIds([...favoriteItemIds, itemId]);
-        }
-    };
 
     return(
         <CatalogContainer className="catalog">
             <div className="services-section__header">
-                <p className="subtitle">Choose and Try</p>
-                <h2>FROM OUR MENU</h2>
+                <p className="subtitle">Menu</p>
+                <h2>Today's Special</h2>
+                <div className="separate-line"></div>
                 <div className="category-buttons">
                     {categories.map(category => (
                         <button
                             key={category}
                             className={`cta-button ${selectedCategory === category ? "active" : ""}`}
-                            onClick={() => {setSelectedCategory(category); setShowCount(6)}}
+                            onClick={() => setSelectedCategory(category)}
                         >
                             {category}
+                            <span className={`bi bi-caret-up-fill ${selectedCategory === category ? "active" : ""}`}></span>
                         </button>
                     ))}
                 </div>
             </div>
             <div className="services-section catalog-services">
-                <div className="services">
+                <div className="s-services">
                     {dataIsLoading
                         ? Array.from({ length: showCount }).map((_, i) => <SkeletonLoader key={i} />)
                         : catalogViewData.length > 0 ? (catalogViewData.map((product, index) => {
-                                return(
-                                    <div className="service" 
-                                    key={index}
-                                    >
-                                        <div className="add-favorite" onClick={() => handleAddFavoriteClick(product._id)}>
-                                            <span className={`bi ${favoriteItemIds.includes(product._id) ? 'bi-heart-fill' : 'bi-heart'}`}></span>
-                                        </div>
-                                        <Link to={`/product/${product._id}`}>
-                                            <div className="service__content">
-                                                <img src={product.images[0]} alt=""/>
-                                                <div className="part-one">
-                                                    <p>{product.category}</p>
-                                                    <div className="star-icons">
-                                                        {Array.from({ length: 5 }).map((_, i) => {
-                                                            const starIndex = i + 1;
-                                                            return (
-                                                            <span 
-                                                                key={starIndex} 
-                                                                className={`bi bi-star${product.averageRating >= starIndex ? '-fill' : product.averageRating >= starIndex - 0.5 ? '-half' : ''}`}
-                                                            >
-                                                            </span>
-                                                            );
-                                                        })}
-                                                    </div>
+                            return(
+                                <div className="s-service" 
+                                key={index}
+                                > 
+                                    <Link to={`/product/${product._id}`}>
+                                        <div className="s-service__content">
+                                            <img src={product.images[0]} alt=""/>
+                                            <div className="part-one">
+                                                <div className="header">
+                                                    <p className="name">{product.name}</p>
+                                                    <p className="price">${product.price}</p>
                                                 </div>
-                                                <p>{product.name}</p>
-                                                <span>PRICE  <span className="initial-price">${product.price}</span> ${product.discountedPrice}</span>
+                                                <div className="description">
+                                                    {product.description.slice(0, 100).toLowerCase()}
+                                                    {product.description.length > 100 && '...'}
+                                                </div>
                                             </div>
-                                        </Link>
-                                    </div>
-                                )
+                                        </div>
+                                    </Link>
+                                </div>
+                            )
                         })) : (
                             <div className="not-found">
                                 <h3>No menu available right now in the selected category!</h3>
