@@ -89,7 +89,7 @@ export const PostContainer = styled.div`
         color: ${theme.colors.paragraph};
         font-size: 0.9375rem;
         line-height: 1.375rem;
-        font-weight: 400;
+        font-weight: 300;
         margin-bottom: ${theme.layout.spaceBetween60};
         @media (min-width: ${theme.breakpoints.up.medium}) {
             font-size: 1.125rem;
@@ -106,6 +106,7 @@ export const PostContainer = styled.div`
             line-height: 1.375rem;
             font-weight: 400;
             color: ${theme.colors.paragraph};
+            background-color: ${theme.colors.transparent};
             width: 80%;
             border: 1px ${theme.colors.c4} solid;
             padding: ${theme.layout.spaceBetween10};
@@ -124,7 +125,7 @@ export const PostContainer = styled.div`
             color: ${theme.colors.white};
             padding: 0.375rem 1.625rem;
             background-color: ${theme.colors.link};
-            border-radius: 5px;
+            border-radius: 2rem;
             border-style: none;
             display: inline-block;
             margin: ${theme.layout.spaceBetween10} 0;

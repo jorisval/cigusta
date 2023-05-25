@@ -25,7 +25,7 @@ const LoaderContainer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: ${theme.colors.titleH4};
 
   .bounce {
     display: inline-block;
@@ -50,6 +50,8 @@ const ThankYouContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: auto;
+  color: ${theme.colors.titleH1};
+  background-color: ${theme.colors.backgroundColor3};
   margin-top: ${theme.layout.spaceBetween30};
   margin-bottom: ${theme.layout.spaceBetween30};
   width: 80%;
@@ -74,6 +76,7 @@ const ThankYouTitle = styled.h2`
 const ThankYouSubtitle = styled.h4`
   font-size: 1.125rem;
   font-weight: normal;
+  color: ${theme.colors.titleH1};
   argin-bottom: ${theme.layout.spaceBetween10};
 
   @media (min-width: ${theme.breakpoints.up.medium}) {
@@ -87,7 +90,8 @@ const OrderSummary = styled.div`
   margin-bottom: ${theme.layout.spaceBetween20};
   border: 1px solid #ccc;
   border-radius: 10px;
-  background-color: #f5f5f5;
+  color: ${theme.colors.titleH1};
+  background-color: ${theme.colors.backgroundColor3};
 `;
 
 const OrderDetails = styled.div`

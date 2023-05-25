@@ -13,9 +13,8 @@ const shimmer = keyframes`
 export const SkeletonLoader = styled.div`
     width: 14.375rem;
     height: 23.6075rem;
-    border-radius: 0.625rem;
-    background-color: #f0f0f0;
-    background-image: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-color: ${theme.colors.titleH4};
+    background-image: linear-gradient(90deg, ${theme.colors.titleH4} 25%, ${theme.colors.link} 50%, ${theme.colors.titleH4} 75%);
     background-size: 200% 100%;
     background-repeat: no-repeat;
     animation: ${shimmer} 1.5s infinite;
@@ -43,32 +42,56 @@ const fadeIn = keyframes`
 
 export const BlogContainer = styled.div`
     animation: ${fadeIn} 1s ease-in;
-    .blog-title {
-        padding: ${theme.layout.spaceBetween90} ${theme.layout.marginLeftRight};
-        padding-bottom: ${theme.layout.spaceBetween30};
-        h1 {
-            color: ${theme.colors.titleH1};
-            font-size: 1.75rem;
-            font-weight: 800;
+    margin: 0 -0.5rem;
+    padding: ${theme.layout.spaceBetween60} ${theme.layout.marginLeftRight};
+    background-color: ${theme.colors.backgroundColor1};
+    border-top: 1px solid ${theme.colors.c4};
+    .blog__header {
+        text-align: center;
+        margin: auto;
+        width: 80%;
+        @media (min-width: ${theme.breakpoints.up.medium}) {
+            width: 40%;
+        }
+        .subtitle {
+            font-family: ${theme.typography.tertiaryFontFamily};
+            font-size: 1.25rem;
+            color: ${theme.colors.secondary};
+            margin-bottom: 0.5rem;
             @media (min-width: ${theme.breakpoints.up.medium}) {
-                font-size: 2.375rem;
+                font-size: 1.875rem;
+                margin-bottom: 1.25rem;
             }
+        }
+        h2 {
+            font-family: ${theme.typography.secondaryFontFamily};
+            font-size: 1.75rem;
+            color: ${theme.colors.white};
+            margin-top: 0.5rem;
+            margin-bottom: 0.625rem;
+            @media (min-width: ${theme.breakpoints.up.medium}) {
+                margin-top: 1.25rem;
+                font-size: 2.5rem;
+            }
+        }
+        .separate-line {
+            width: 30px;
+            margin: auto;
+            border: 1px solid ${theme.colors.secondary};
         }
     }
     .articles {
-        padding: ${theme.layout.spaceBetween30} ${theme.layout.marginLeftRight};
-        padding-bottom: ${theme.layout.spaceBetween30};
+        margin-top: ${theme.layout.spaceBetween30};
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         flex-wrap: wrap;
-        .article {
+        .blog-view__article {
             width: 14.375rem;
-            border-radius: 0.625rem;
             text-align: left;
             font-weight: 400;
             font-size: 1rem;
-            background-color: ${theme.colors.f6};
+            background-color: ${theme.colors.backgroundColor3};
             padding-bottom: 0.9375rem;
             margin-bottom: 2.1875rem;
             @media (max-width: ${theme.breakpoints.down.small}) {
@@ -80,41 +103,55 @@ export const BlogContainer = styled.div`
                 font-size: 1.125rem;
                 padding-bottom: 1.875rem;
             }
-            a {
-                text-decoration: none;
+            &:hover {
+                border-bottom: 3px solid ${theme.colors.secondary};
             }
-            img {
-                width: 100%;
-                border-radius: 0.625rem 0.625rem 0 0;
-                margin-bottom: 0.9375rem;
-                @media (min-width: ${theme.breakpoints.up.medium}) {
-                    margin-bottom: 1.25rem;
+            .image {
+                height: 200px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    z-index: 20;
                 }
             }
+            .content {
+                position: relative;
+                z-index: 21;
+                width: 80%;
+                background-color: ${theme.colors.backgroundColor3};
+                padding: 1rem;
+                margin: auto;
+                margin-top: -${theme.layout.spaceBetween60};
+            }
             h3 {
-                margin: 0 0.625rem;
+                margin: 0;
                 margin-bottom: 0.9375rem;
+                color: ${theme.colors.titleH2};
+                background-color: ${theme.colors.backgroundColor3};
+                font-familly: ${theme.typography.secondaryFontFamily};
                 font-size: 1.25rem;
-                font-weight: 500;
+                font-weight: bold;
                 @media (min-width: ${theme.breakpoints.up.medium}) {
                     font-size: 1.375rem;
                 } 
             }
             p {
-                color: ${theme.colors.paragraph};
-                margin: 0 0.625rem;
+                color: ${theme.colors.white};
+                margin: 0;
                 margin-bottom: 0.875rem;
+                font-weight: 300;
                 @media (min-width: ${theme.breakpoints.up.medium}) {
                     margin-bottom: 1rem;
                     line-height: 24px;
                 }
             }
-            span {
-                margin: 0 0.625rem;
-                color: ${theme.colors.paragraph};
-                font-size: 0.75rem;
-                @media (min-width: ${theme.breakpoints.up.medium}) {
-                    font-size: 0.875rem;
+            .cta-button {
+                background-color: ${theme.colors.transparent};
+                border: 2px solid ${theme.colors.white};
+                box-shadow: 0 4 4 rgba(0, 0, 0, 0.1);
+                &:hover {
+                    background-color: ${theme.colors.secondary};
                 }
             }
         }
@@ -131,7 +168,7 @@ export const BlogContainer = styled.div`
             width: 5.625rem;
             padding: 0.375rem 1.75rem;
             background-color: ${theme.colors.link};
-            border-radius: 5px 0 0 5px;
+            border-radius: 2rem 0 0 2rem;
             border-style: none;
             display: inline-block;
             margin-bottom: ${theme.layout.spaceBetween30};
@@ -152,7 +189,7 @@ export const BlogContainer = styled.div`
             width: 5.625rem;
             padding: 0.375rem 1.75rem;
             background-color: ${theme.colors.link};
-            border-radius: 0 5px 5px 0;
+            border-radius: 0 2rem 2rem 0;
             border-style: none;
             display: inline-block;
             margin-bottom: ${theme.layout.spaceBetween30};

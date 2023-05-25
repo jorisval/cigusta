@@ -9,7 +9,7 @@ const ComponentsStyle = createGlobalStyle`
         color: ${theme.colors.white};
         padding: 0.625rem 1.75rem;
         background-color: ${theme.colors.button};
-        border-radius: 5px;
+        border-radius: 2rem;
         border-style: none;
         display: inline-block;
         cursor: pointer;
@@ -44,7 +44,7 @@ const ComponentsStyle = createGlobalStyle`
         color: ${theme.colors.white};
         padding: 0.625rem 1.75rem;
         background-color: ${theme.colors.link};
-        border-radius: 5px;
+        border-radius: 2rem;
         border-style: none;
         display: inline-block;
         cursor: pointer;

@@ -1,6 +1,7 @@
 // src/components/ThankYouPopup.js
 import React from 'react';
 import styled from 'styled-components';
+import theme from '../utils/Variables';
 
 const PopupOverlay = styled.div`
   position: fixed;
@@ -17,10 +18,12 @@ const PopupOverlay = styled.div`
 
 const PopupContent = styled.div`
   position: relative;
-  background-color: #ffffff;
+  background-color: ${theme.colors.titleH4};
+  color: ${theme.colors.titleH1};
   border-radius: 10px;
   padding: 20px;
   width: 80%;
+  font-weight: 300;
   max-width: 400px;
 `;
 
@@ -35,7 +38,7 @@ const CloseButton = styled.span`
 
 const ThankYouTitle = styled.h2`
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 10px;
 `;
 

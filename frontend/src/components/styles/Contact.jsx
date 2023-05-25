@@ -30,6 +30,7 @@ export const ContactContainer = styled.div`
                 line-height: 1.375rem;
                 font-weight: 400;
                 color: ${theme.colors.paragraph};
+                background-color: ${theme.colors.backgroundColor3};
                 width: 100%;
                 border: 1px ${theme.colors.c4} solid;
                 padding: ${theme.layout.spaceBetween10};
@@ -54,7 +55,7 @@ export const ContactContainer = styled.div`
                     font-family: ${theme.typography.primaryFontFamily};
                     font-size: 0.9375rem;
                     line-height: 1.375rem;
-                    font-weight: 400;
+                    font-weight: 300;
                     color: ${theme.colors.paragraph};
                     @media (min-width: ${theme.breakpoints.up.medium}) {
                         font-size: 1rem;
@@ -69,7 +70,7 @@ export const ContactContainer = styled.div`
                 padding: 0.375rem 1.625rem;
                 background-color: ${theme.colors.link};
                 width: unset;
-                border-radius: 5px;
+                border-radius: 2rem;
                 border-style: none;
                 display: inline-block;
                 cursor: pointer;

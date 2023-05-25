@@ -19,7 +19,7 @@ export const CheckoutContainer = styled.div`
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    background-color: #f5f5f5;
+    background-color: ${theme.colors.backgroundColor3};
 
     @media (min-width: ${theme.breakpoints.up.medium}) {
         width: 50%;
@@ -34,7 +34,7 @@ export const FormSection = styled.div`
     margin-bottom: 30px;
     padding: 20px;
     border-radius: 10px;
-    background-color: ${theme.colors.background};
+    background-color: ${theme.colors.backgroundColor3};
     border: 1px solid ${theme.colors.c4};
     `;
 
@@ -73,6 +73,7 @@ export const StyledInput = styled.input`
     line-height: 1.375rem;
     font-weight: 400;
     color: ${theme.colors.paragraph};
+    background-color: ${theme.colors.backgroundColor3};
     width: 90%;
     border: 1px ${theme.colors.c4} solid;
     padding: ${theme.layout.spaceBetween10};
@@ -128,7 +129,7 @@ export const StyledButton = styled.button`
     padding: 0.625rem 1.75rem;
     background-color: ${theme.colors.link};
     border: 1px solid ${theme.colors.link};
-    border-radius: 5px;
+    border-radius: 2rem;
     cursor: pointer;
     margin-top: ${theme.layout.spaceBetween20};
     transition: background-color 0.2s ease-in-out;

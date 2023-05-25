@@ -15,7 +15,7 @@ export const ProductContainer = styled.div`
     .product-hero {
         padding: ${theme.layout.spaceBetween30} ${theme.layout.marginLeftRight};
         margin: 0 -0.5rem;
-        background-color: ${theme.colors.f6};
+        background-color: ${theme.colors.backgroundColor2};
 
         @media (min-width: ${theme.breakpoints.up.small}) {
             display: flex;
@@ -38,9 +38,9 @@ export const ProductContainer = styled.div`
 
         &__part-2 {
             font-size: 1.125rem;
-            font-weight: 400;
+            font-weight: 300;
             margin: auto;
-
+            color: ${theme.colors.white};
             @media (min-width: ${theme.breakpoints.up.small}) {
                 margin: unset;
                 font-size: 1.25rem;
@@ -60,9 +60,10 @@ export const ProductContainer = styled.div`
             }
 
             h2 {
+                font-familly: ${theme.typography.secondaryFontFamily};
                 font-size: 1.5rem;
                 margin-top: 1rem;
-                color: ${theme.colors.primary};
+                color: ${theme.colors.titleH2};
 
                 @media (min-width: ${theme.breakpoints.up.small}) {
                     margin-top: 0.5rem;
@@ -81,13 +82,13 @@ export const ProductContainer = styled.div`
                 }
 
                 span {
-                    color: ${theme.colors.primary};
+                    color: ${theme.colors.white};
                     font-size: 1.25rem;
                 }
             }
 
             .option {
-                color: ${theme.colors.paragraph};
+                color: ${theme.colors.white};
 
                 p {
                     margin-bottom: 1rem;
@@ -132,8 +133,8 @@ export const ProductContainer = styled.div`
                     font-size: 1rem;
                     color: ${theme.colors.paragraph};
                     padding: 0.25rem 0.5rem;
-                    border: 1px ${theme.colors.c4} solid;
-                    background-color: ${theme.colors.white};
+                    border: 1px ${theme.colors.c6} solid;
+                    background-color: ${theme.colors.backgroundColor2};
                     cursor: pointer;
                     @media (min-width: ${theme.breakpoints.up.medium}) {
                         font-size: 1.125rem;
@@ -143,6 +144,7 @@ export const ProductContainer = styled.div`
                 input {
                     font-size: 1rem;
                     color: ${theme.colors.paragraph};
+                    background-color: ${theme.colors.backgroundColor2};
                     padding-top: 0.25rem;
                     padding-bottom: 0.25rem;
                     text-align: center;
@@ -171,14 +173,15 @@ export const ProductContainer = styled.div`
     }
 
     .product-body {
-        padding: ${theme.layout.spaceBetween30} ${theme.layout.marginLeftRight};
+        margin: 0 -0.5rem;
+        padding: ${theme.layout.spaceBetween60} ${theme.layout.marginLeftRight};
+        background-color: ${theme.colors.backgroundColor1};
         color: ${theme.colors.paragraph};
         font-size: 1rem;
         line-height: 1.8rem;
-
+        font-weight: 300;
         @media (min-width: ${theme.breakpoints.up.medium}) {
-            padding: ${theme.layout.spaceBetween60} ${theme.layout.marginLeftRight};
-            width: 70%;
+            padding: ${theme.layout.spaceBetween60} 30%;
             margin: auto;
         }
     }

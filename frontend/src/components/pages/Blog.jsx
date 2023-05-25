@@ -28,45 +28,35 @@ function Blog() {
         currentPage > 1 && setCurrentPage(currentPage - 1);
     }
 
-    const formatedDate = (isoDate) => {
-        // Create a new Date object from the ISO date string
-        const date = new Date(isoDate);
-
-        // Define an array of month names
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-        // Format the date into the desired format
-        const formatDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-
-        return(formatDate); // "March 29, 2023"
-
-    }
-
     return(
         <BlogContainer className="Blog">
-            <div className="blog-title">
-            <h1>Blog</h1>
-        </div>
+            <div className="blog__header">
+                <p className="subtitle">Latest News</p>
+                <h2>From Our Blog</h2>
+                <div className="separate-line"></div>
+            </div>
         <div className="articles">
             { dataIsLoading
                     ? Array.from({ length: perPage }).map((_, i) => <SkeletonLoader key={i} />)
                     : Array.isArray(currentPosts) && currentPosts.map((post) => {
-                return(
-                    <div className="article" key={post._id}>
-                        <Link to={`/article/${post._id}`}>
-                            <img src={post.imageUrl} alt=""/>
-                            <h3>
-                                {post.title.slice(0, 40)}
-                                {post.title.length > 40 && '...'}
-                            </h3>
-                            <p>
-                                {post.content.slice(0, 150)}
-                                {post.content.length > 150 && '...'}
-                            </p>
-                            <span>{formatedDate(post.dateCreated)}</span>
-                        </Link>
-                    </div>
-                )
+                        return(
+                            <div className="blog-view__article" key={post._id}>
+                                <div className="image">
+                                    <img src={post.imageUrl} alt=""/>
+                                </div>
+                                <div className="content">
+                                    <h3>
+                                        {post.title.slice(0, 40)}
+                                        {post.title.length > 40 && '...'}
+                                    </h3>
+                                    <p>
+                                        {post.content.slice(0, 150)}
+                                        {post.content.length > 150 && '...'}
+                                    </p>
+                                    <Link to={`/article/${post._id}`} className="cta-button">More Details</Link>
+                                </div>
+                            </div>
+                        )
             }) }
         </div>
         <div className="buttons-article">
