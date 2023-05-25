@@ -19,12 +19,16 @@ import CustomerImage2 from "../../assets/images/review-image-2.png";
 //import Trust7 from "../../assets/images/trust-7.png";
 import { HomeContainer } from "../styles/Home";
 import { Link } from "react-router-dom";
+import { useFetch } from "../utils/hooks";
+import { SkeletonLoader } from "../styles/Blog";
 
 
 function Home() {
     const { setActivePage } = useContext(HeaderContext);
     const [activeHeroSlide, setActiveHeroSlide] = useState(0);
     const heroSlideRef = useRef();
+    const { data, dataIsLoading } = useFetch('http://localhost:3000/api/post');
+    const currentPosts = Array.isArray(data) && data?.slice(0, 3);
     const heroSlidesData = [
         {
             title: "Welcome To Restaurant",
@@ -277,114 +281,38 @@ function Home() {
                     <p className="story">consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehiculacongue adipiscing elit duis tristique sollicitudin...</p>      
                     <Link to="" className="cta-button">More Details</Link>
                 </div>
-            </div>{/*
-            <div className="section-two">
-                <div className="section-two__image">
+            </div>
+            <div className="blog-view">
+                <div className="blog-view__header">
+                    <p className="subtitle">Latest News</p>
+                    <h2>From Our Blog</h2>
+                    <div className="separate-line"></div>
                 </div>
-                <div className="section-two__text">
-                    <p className="subtitle">Reservation</p>
-                    <h2>BOOK A TABLE NOW !</h2>
-                    <div className="booking-section">
-                        <form onSubmit={handleBookingSubmit}>
-                            <div>
-                                <select name="person" id="person">
-                                    <option value="1">1 Person</option>
-                                    <option value="2">2 Person</option>
-                                    <option value="3">3 Person</option>
-                                    <option value="4">4 Person</option>
-                                    <option value="5">5 Person</option>
-                                    <option value="6">6 Person</option>
-                                </select>
+                <div className="blog-view__articles">
+                { dataIsLoading
+                    ? Array.from({ length: 3 }).map((_, i) => <SkeletonLoader key={i} />)
+                    : Array.isArray(currentPosts) && currentPosts.map((post) => {
+                        return(
+                            <div className="blog-view__article" key={post._id}>
+                                <div className="image">
+                                    <img src={post.imageUrl} alt=""/>
+                                </div>
+                                <div className="content">
+                                    <h3>
+                                        {post.title.slice(0, 40)}
+                                        {post.title.length > 40 && '...'}
+                                    </h3>
+                                    <p>
+                                        {post.content.slice(0, 150)}
+                                        {post.content.length > 150 && '...'}
+                                    </p>
+                                    <Link to={`/article/${post._id}`} className="cta-button">More Details</Link>
+                                </div>
                             </div>
-                            <div><input type="email" name="email" id="email" placeholder="Email"/></div>
-                            <div><input type="time" name="time" id="time" defaultValue={currentTime}/></div>
-                            <div><textarea name="message" id="message" rows="6" placeholder="Message"></textarea></div>
-                            <div><input type="submit" value="RESERVE NOW" className="cta-button"/></div>
-                        </form>
-                    </div>
+                        )
+                    }) }
                 </div>
             </div>
-            {showThankYouPopup && (
-                <ThankYouPopup onClose={handleCloseThankYouPopup} />
-            )}
-            <div className="staff">
-                <div className="staff-header">
-                    <div className="staff-header__part1">
-                        <p className="subtitle">Our Professional</p>
-                        <h2>MEET OUR STAFF</h2>
-                    </div>
-                    <div className="staff-header__part2">
-                        <Link to='/faq' className="cta-button">VIEW ALL STAFF</Link>
-                    </div>
-                </div>
-                <div className="staff-members">
-                    <div className="staff-member">
-                        <div className="image">
-                            <img src={StaffImage1} alt=""/>
-                        </div>
-                        <div className="infos">
-                            <div className="staff-member__name">RASALINA DE</div>
-                            <div className="staff-member__experience">12 YEARS EXPERIENCE</div>
-                        </div>
-                        <div className="media">
-                            <Link to=""><span className="bi bi-facebook"></span></Link>
-                            <Link to=""><span className="bi bi-twitter"></span></Link>
-                            <Link to=""><span className="bi bi-pinterest"></span></Link>
-                            <Link to=""><span className="bi bi-linkedin"></span></Link>
-                        </div>
-                    </div>
-                    <div className="staff-member">
-                        <div className="image">
-                            <img src={StaffImage2} alt=""/>
-                        </div>
-                        <div className="infos">
-                            <div className="staff-member__name">MARK HERNERITIX</div>
-                            <div className="staff-member__experience">10 YEARS EXPERIENCE</div>
-                        </div>
-                        <div className="media">
-                            <Link to=""><span className="bi bi-facebook"></span></Link>
-                            <Link to=""><span className="bi bi-twitter"></span></Link>
-                            <Link to=""><span className="bi bi-pinterest"></span></Link>
-                            <Link to=""><span className="bi bi-linkedin"></span></Link>
-                        </div>
-                    </div>
-                    <div className="staff-member">
-                        <div className="image">
-                            <img src={StaffImage3} alt=""/>
-                        </div>
-                        <div className="infos">
-                            <div className="staff-member__name">PETER SIA</div>
-                            <div className="staff-member__experience">12 YEARS EXPERIENCE</div>
-                        </div>
-                        <div className="media">
-                            <Link to=""><span className="bi bi-facebook"></span></Link>
-                            <Link to=""><span className="bi bi-twitter"></span></Link>
-                            <Link to=""><span className="bi bi-pinterest"></span></Link>
-                            <Link to=""><span className="bi bi-linkedin"></span></Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="trust-section">
-                <div className="trust-images">
-                    <img src={Trust1} alt="" />
-                    <img src={Trust2} alt="" />
-                    <img src={Trust3} alt="" />
-                    <img src={Trust4} alt="" />
-                    <img src={Trust5} alt="" />
-                    <img src={Trust6} alt="" />
-                    <img src={Trust7} alt="" />
-                </div>
-                <div className="trust-images">
-                    <img src={Trust1} alt="" />
-                    <img src={Trust2} alt="" />
-                    <img src={Trust3} alt="" />
-                    <img src={Trust4} alt="" />
-                    <img src={Trust5} alt="" />
-                    <img src={Trust6} alt="" />
-                    <img src={Trust7} alt="" />
-                </div>
-            </div>*/}
         </HomeContainer>
     )
 }
