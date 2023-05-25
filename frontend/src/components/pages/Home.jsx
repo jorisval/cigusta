@@ -1,22 +1,10 @@
 import React, { useContext, useEffect, useState, useRef, useCallback } from "react";
 import CatalogView from "../layout/catalog-view";
-//import ThankYouPopup from "./Thank-you-booking";
 import { HeaderContext } from "../utils/context";
 import Slide1 from "../../assets/images/cigusta-hero-background.png";
 import Slide2 from "../../assets/images/cigusta-hero-background.png";
 import CustomerImage1 from "../../assets/images/review-image-1.png";
 import CustomerImage2 from "../../assets/images/review-image-2.png";
-//import Coma from "../../assets/images/section-one-coma.png";
-//import StaffImage1 from "../../assets/images/staff-1.png";
-//import StaffImage2 from "../../assets/images/staff-2.png";
-//import StaffImage3 from "../../assets/images/staff-3.png";
-//import Trust1 from "../../assets/images/trust-1.png";
-//import Trust2 from "../../assets/images/trust-2.png";
-//import Trust3 from "../../assets/images/trust-3.png";
-//import Trust4 from "../../assets/images/trust-4.png";
-//import Trust5 from "../../assets/images/trust-5.png";
-//import Trust6 from "../../assets/images/trust-6.png";
-//import Trust7 from "../../assets/images/trust-7.png";
 import { HomeContainer } from "../styles/Home";
 import { Link } from "react-router-dom";
 import { useFetch } from "../utils/hooks";
@@ -115,96 +103,10 @@ function Home() {
         return () => clearInterval(autoScrollTimer);
     }, [autoScroll]); 
         
-    /*const [showThankYouPopup, setShowThankYouPopup] = useState(false);
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const currentTime = `${hours}:${minutes}`;
-
-    const [activeReview, setActiveReview] = useState(0);
-    const reviewRef = useRef();
-    const reviewsData = [
-        {
-            name: "RONALD D. MORGAN",
-            post: "FOUCHETTE & CO",
-            image: CustomerImage1,
-            comment: "Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi."
-        },
-        {
-            name: "JEAN D. CLAUDE",
-            post: "CHIVI & CO",
-            image: CustomerImage1,
-            comment: "Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi."
-        },
-        {
-            name: "ALEX TARGARIAN",
-            post: "THRONE & CO",
-            image: CustomerImage1,
-            comment: "Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi."
-        },
-        {
-            name: "SAHAD DANARIAS",
-            post: "TESLA INC.",
-            image: CustomerImage1,
-            comment: "Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi."
-        }
-    ]
-    
-    const handleReviewScroll = (direction) => {
-        if (direction === 'left') {
-            reviewRef.current.scrollLeft -= reviewRef.current.offsetWidth;
-            if (activeReview > 0) {
-                setActiveReview(activeReview - 1);
-            }
-        } else {
-            reviewRef.current.scrollLeft += reviewRef.current.offsetWidth;
-            if   (activeReview < reviewsData.length - 1) {
-                setActiveReview(activeReview + 1);
-            }
-        }
-    };
-
-    const handleReviewCircleClick = (index) => {
-        setActiveReview(index);
-        reviewRef.current.scrollLeft = index * reviewRef.current.offsetWidth;
-    };*/
-
-
+   
     useEffect(() => {
         setActivePage('home');
-    }, [setActivePage]);/*
-    async function handleBookingSubmit(event) {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const searchParams = new URLSearchParams();
-      
-        for (const [key, value] of formData.entries()) {
-          searchParams.append(key, value);
-        }
-      
-        try {
-            await fetch("http://localhost:3000/api/booking/", {
-                method: "POST",
-                body: searchParams,
-                headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                },
-            });
-
-            // Reset the form
-            event.target.reset();
-            
-            //Redirect to the home page
-            setShowThankYouPopup(true);
-        } catch (error) {
-            console.error("Error:", error);
-        }
-    }
-
-    const handleCloseThankYouPopup = () => {
-        setShowThankYouPopup(false);
-    };
-    */
+    }, [setActivePage]);
 
     return(
         <HomeContainer className="home" backgroundImage={heroSlidesData[activeHeroSlide].image}>

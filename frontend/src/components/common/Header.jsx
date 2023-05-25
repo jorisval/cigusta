@@ -1,29 +1,23 @@
 import { HeaderContext } from "../utils/context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import MenuMd from "./Menu-md";
 import Logo from "../../assets/images/cigusta-logo.png";
 import NavLg from "./Nav-lg";
-import Search from "./Search";
 import Cart from "./Cart";
-import Favorite from "./Favorite";
 import { Link } from "react-router-dom";
+import BookingSection from "../pages/Booking";
 
 function Header() {
   const { activePage } = useContext(HeaderContext);
-
-  const handleSearchClick = () => {
-    document.querySelector('.search .background').style.display = 'block';
-    document.querySelector('.search-content').classList.add('show');
-  };
+  const [showBookingPopup, setShowBookingPopup] = useState(false);
 
   const handleBagPlusClick = () => {
     document.querySelector('.cart .background').style.display = 'block';
     document.querySelector('.cart-content').classList.add('show');
   };
 
-  const handleFavoriteClick = () => {
-    document.querySelector('.favorite .background').style.display = 'block';
-    document.querySelector('.favorite-content').classList.add('show');
+  const handleBookingPopup = () => {
+    setShowBookingPopup(false);
   };
 
   return (
@@ -51,14 +45,16 @@ function Header() {
         <NavLg />
         <div className="header__butons">
           <div className="header__booking">
-              <span onClick={handleSearchClick}>Book Now</span>
+              <span onClick={() => setShowBookingPopup(true)}>Book Now</span>
           </div>
           <div className="header__cart">
               <span className="bi bi-cart3" onClick={handleBagPlusClick}></span>
           </div>
           <div className="header__call">
               <div className="call-icon">
-                <span className="bi bi-telephone-fill" onClick={handleFavoriteClick}></span>
+                <Link to="">
+                  <span className="bi bi-telephone-fill"></span>
+                </Link>
               </div>
               <div className="call">
                 <span className="text">Call Us</span>
@@ -66,9 +62,10 @@ function Header() {
               </div>
           </div>
         </div>
-        <Search />
         <Cart />
-        <Favorite />
+        {showBookingPopup && (
+                <BookingSection onClose={handleBookingPopup} />
+        )}
       </div>  
     </>
   );
