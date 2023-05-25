@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import theme from '../utils/Variables';
-import SectionOneImage from "../../assets/images/cigusta-hero-image.png";
+import StorySectionImage from "../../assets/images/image-story.png";
 import SectionTwoImage from "../../assets/images/cigusta-hero-image.png";
 
 const fadeIn = keyframes`
@@ -323,12 +323,85 @@ animation: ${fadeIn} 1s ease-in;
     }
 }
 
+.story-section {
+    margin: 0 -0.5rem;
+    padding: ${theme.layout.spaceBetween60} ${theme.layout.marginLeftRight};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background: url(${StorySectionImage}) center center / cover;
+    @media (min-width: ${theme.breakpoints.up.large}) {
+        background: unset;
+        background-color: ${theme.colors.backgroundColor3};
+    }
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 7;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(20, 20, 20, 0.8);
+        @media (min-width: ${theme.breakpoints.up.large}) {
+            position: relative;
+            background: url(${StorySectionImage}) center center / cover;
+            min-height: 500px;
+            width: 40%;
+        }
+    }
+    &__text {
+        width: 100%;
+        z-index: 8;
+        box-sizing: border-box;
+        text-align: center;
+        @media (min-width: ${theme.breakpoints.up.large}) {
+            width: 50%;
+            text-align: left;
+        }
+        .subtitle {
+            font-family: ${theme.typography.tertiaryFontFamily};
+            font-size: 1.25rem;
+            color: ${theme.colors.secondary};
+            margin-bottom: 0.5rem;
+            @media (min-width: ${theme.breakpoints.up.medium}) {
+                font-size: 1.875rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+        h2 {
+            font-family: ${theme.typography.secondaryFontFamily};
+            font-size: 1.75rem;
+            color: ${theme.colors.white};
+            margin-top: 0.5rem;
+            margin-bottom: 0.625rem;
+            @media (min-width: ${theme.breakpoints.up.medium}) {
+                margin-top: 1.25rem;
+                font-size: 2.5rem;
+            }
+        }
+        .separate-line {
+            width: 30px;
+            margin: auto;
+            border: 1px solid ${theme.colors.secondary};
+            @media (min-width: ${theme.breakpoints.up.large}) {
+                margin: 0;
+            }
+        }
+        p {
+            font-size: 1rem;
+            color: ${theme.colors.white};
+            font-weight: 200;
+            line-height: 1.25rem;
+        }
+    }
+}
 .section-one {
     margin: 0 -0.5rem;
     margin-top: ${theme.layout.spaceBetween90};
     display: flex;
     position: relative;
-    background: url(${SectionOneImage}) center center / cover;
+    background: url(${StorySectionImage}) center center / cover;
     @media (min-width: ${theme.breakpoints.up.large}) {
         background: unset;
         background-color: ${theme.colors.backgroundColor1};
@@ -342,7 +415,7 @@ animation: ${fadeIn} 1s ease-in;
         height: 100%;
         background-color: rgba(20, 20, 20, 0.9);
         @media (min-width: ${theme.breakpoints.up.large}) {
-            background: url(${SectionOneImage}) center center / cover;
+            background: url(${StorySectionImage}) center center / cover;
             width: 50%;
             left: unset;
             right: 0;

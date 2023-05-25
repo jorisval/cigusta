@@ -267,40 +267,17 @@ function Home() {
                     })}
                 </div>
             </div>
-            {/*
-            <div className="section-one">
-                <div className="section-one__image">
+            <div className="story-section">
+                <div className="story-section__image">
                 </div>
-                <div className="section-one__text">
-                    <p className="subtitle">Testimonial</p>
-                    <h2>OUR CUSTOMER SAY</h2>
-                    <div className="coma">
-                        <img src={Coma} alt=""/>
-                        <img src={Coma} alt=""/>
-                    </div>
-                    <div className="Customer-reviews" ref={reviewRef}>
-                        <span className="bi bi-chevron-left" onClick={() => handleReviewScroll('left')}></span>
-                        {reviewsData.map((review, index) => (
-                            <div className={`Customer-review ${index === activeReview ? 'active' : ''}`} key={index}>
-                                <p>{review.comment}</p>
-                                <img src={review.image} alt="" className="Customer-review__image"/>
-                                <div className="Customer-review__name">{review.name}</div>
-                                <div className="Customer-review__post">{review.post}</div>
-                            </div>
-                        ))}
-                        <span className="bi bi-chevron-right" onClick={() => handleReviewScroll('right')}></span>
-                    </div>
-                    <div className="review-circles">
-                        {reviewsData.map((_, index) => (
-                            <div
-                                className={`review-circle ${index === activeReview ? 'active' : ''}`}
-                                onClick={() => handleReviewCircleClick(index)}
-                                key={index}
-                            />
-                        ))}
-                    </div>
+                <div className="story-section__text">
+                    <p className="subtitle">About Us</p>
+                    <h2>Our Story</h2>
+                    <div className="separate-line"></div>
+                    <p className="story">consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehiculacongue adipiscing elit duis tristique sollicitudin...</p>      
+                    <Link to="" className="cta-button">More Details</Link>
                 </div>
-            </div>
+            </div>{/*
             <div className="section-two">
                 <div className="section-two__image">
                 </div>
