@@ -128,7 +128,7 @@ const LayoutsStyle = createGlobalStyle`
             &.active {
                 left: calc(100vw - ${theme.layout.menuTabWidth});
                 transition: all 600ms ease-in-out;
-                background-color: ${theme.colors.paragraph};
+                background-color: ${theme.colors.backgroundColor1};
                 position: fixed;
 
                 #icon-bar-one {
@@ -182,9 +182,10 @@ const LayoutsStyle = createGlobalStyle`
 
             &.show {
                 left: 0px;
-                background-color: ${theme.colors.paragraph};
+                background-color: ${theme.colors.backgroundColor1};
                 transition: all 0.6s ease-in-out;
                 position: fixed;
+                z-index: 99;
             }
             }
         }
