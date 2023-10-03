@@ -25,7 +25,7 @@ function Header() {
       <div className="header-band">
         <ul className="infos">
           <li><span className="bi bi-telephone-fill"></span>+33 7 80 70 82 87</li>
-          <li><span className="bi bi-envelope-fill"></span>info@kingfood.com</li>
+          <li><span className="bi bi-envelope-fill"></span>info@cigusta.com</li>
           <li><span className="bi bi-geo-alt-fill"></span>123 Main Street, New York, NY 10030</li>
           <li><span className="bi bi-clock-fill"></span>10AM - 5 PM</li>
         </ul>
