@@ -9,13 +9,14 @@ import { HomeContainer } from "../styles/Home";
 import { Link } from "react-router-dom";
 import { useFetch } from "../utils/hooks";
 import { SkeletonLoader } from "../styles/Blog";
+import { BASE_URL } from "../../config";
 
 
 function Home() {
     const { setActivePage } = useContext(HeaderContext);
     const [activeHeroSlide, setActiveHeroSlide] = useState(0);
     const heroSlideRef = useRef();
-    const { data, dataIsLoading } = useFetch('http://localhost:3000/api/post');
+    const { data, dataIsLoading } = useFetch(`${BASE_URL}/api/post`);
     const currentPosts = Array.isArray(data) && data?.slice(0, 3);
     const heroSlidesData = [
         {

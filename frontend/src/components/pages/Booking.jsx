@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../utils/Variables';
+import { BASE_URL } from "../../config";
 
 const PopupOverlay = styled.div`
   position: fixed;
@@ -130,7 +131,7 @@ const ThankYouPopup = ({ onClose }) => {
         }
       
         try {
-            await fetch("http://localhost:3000/api/booking/", {
+            await fetch(`${BASE_URL}/api/booking/`, {
                 method: "POST",
                 body: searchParams,
                 headers: {

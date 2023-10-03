@@ -6,10 +6,11 @@ import Gallery5 from "../../assets/images/gallery05.png";
 import Gallery6 from "../../assets/images/gallery06.png";
 import { useFetch } from "../utils/hooks";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../config";
 
 
 function Footer() {
-    const { data } = useFetch('http://localhost:3000/api/post');
+    const { data } = useFetch(`${BASE_URL}/api/post`);
     const posts = Array.isArray(data) && data?.slice(0, 3);
 
     const formatedDate = (isoDate) => {

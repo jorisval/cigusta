@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.b238f733.js",
+    "main.js": "/static/js/main.1a577802.js",
     "static/media/catalog-view-background.png": "/static/media/catalog-view-background.8f612dbd4c300076b8c5.png",
     "static/media/cigusta-hero-background.png": "/static/media/cigusta-hero-background.02184d3ab49a2dbfaf0a.png",
     "static/media/image-story.png": "/static/media/image-story.5c2ed129598fa382533b.png",
@@ -12,9 +12,9 @@
     "static/media/gallery05.png": "/static/media/gallery05.eee878ec8e629d96512e.png",
     "static/media/gallery06.png": "/static/media/gallery06.70db3cbfbf23aeec5843.png",
     "index.html": "/index.html",
-    "main.b238f733.js.map": "/static/js/main.b238f733.js.map"
+    "main.1a577802.js.map": "/static/js/main.1a577802.js.map"
   },
   "entrypoints": [
-    "static/js/main.b238f733.js"
+    "static/js/main.1a577802.js"
   ]
 }
