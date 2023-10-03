@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/static/js/main.b238f733.js",
+    "static/media/catalog-view-background.png": "/static/media/catalog-view-background.8f612dbd4c300076b8c5.png",
+    "static/media/cigusta-hero-background.png": "/static/media/cigusta-hero-background.02184d3ab49a2dbfaf0a.png",
+    "static/media/image-story.png": "/static/media/image-story.5c2ed129598fa382533b.png",
+    "static/media/404-error-pana.svg": "/static/media/404-error-pana.5f4733a74694a2ac9cda6cd3ded4ce69.svg",
+    "static/media/gallery02.png": "/static/media/gallery02.071484a22a1dc4e34309.png",
+    "static/media/gallery03.png": "/static/media/gallery03.62c6ae75be81af357106.png",
+    "static/media/gallery04.png": "/static/media/gallery04.b8bf9b7ca2445b1cd7ec.png",
+    "static/media/gallery01.png": "/static/media/gallery01.157bc939407e04a062f3.png",
+    "static/media/gallery05.png": "/static/media/gallery05.eee878ec8e629d96512e.png",
+    "static/media/gallery06.png": "/static/media/gallery06.70db3cbfbf23aeec5843.png",
+    "index.html": "/index.html",
+    "main.b238f733.js.map": "/static/js/main.b238f733.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.b238f733.js"
+  ]
+}
