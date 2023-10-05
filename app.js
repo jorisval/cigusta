@@ -17,7 +17,11 @@ const allowedDomains = [
     'http://localhost:3001',
     'http://localhost:3001/',
     'https://cigusta.vercel.app/',
-    'https://cigusta.vercel.app'
+    'https://cigusta.vercel.app',
+    'https://cigusta-92226f351274.herokuapp.com',
+    'https://cigusta-92226f351274.herokuapp.com/',
+    'http://cigusta-92226f351274.herokuapp.com',
+    'http://cigusta-92226f351274.herokuapp.com/'
 ];
   
 
